@@ -9,16 +9,27 @@
 
     <body>
         <div class="main-content">
-            {{>header}}
-
-            <p>Use this site to see you weather!</p>
+            <div id="header">
+                {{>header}}
+            </div>
 
             <form>
                 <input placeholder="Location">
                 <button>Search</button>
             </form>
-            <p id="message-1"></p>
-            <p id="message-2"></p>
+
+            <div id="weatherContent" class="weatherContent">
+                <div id="locationContent"> <p id="pLocation" style="font-size:160%; padding-top: 16px"></p> </div>
+                <div id="timeContent"> <p id="pTime" style="color:#c6cacc; padding-bottom: 16px"></p> </div>
+                <div id="main">
+                    <div id="temperatureContent"> <p id="pTemperature" style="font-size: 450%;font-weight: 500;padding-bottom: 16px;"></p> </div>
+                    <div id="weatherIcon" style="text-align: right"></div>
+                </div>
+                <div id="forcastContent"> <p id="pForcast" style="font-size: 180%; font-weight: bold; padding-bottom: 16px"></p> </div>
+                <div id="precipContent"> <p id="pPrecip" style="padding-bottom: 5px"></p> </div>
+                <div id="humidityContent"> <p id="pHumidity" style="padding-bottom: 5px"></p> </div>
+            </div>
+    
         </div>
     
         {{>footer}}

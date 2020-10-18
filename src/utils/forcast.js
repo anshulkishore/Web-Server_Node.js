@@ -10,8 +10,15 @@ const forcast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback('Unable to find location !', undefined)
         } else {
-            callback(undefined, body.current.weather_descriptions[0] + '. It is currently ' 
-                    + body.current.temperature + ' degrees out and humidity is ' + body.current.humidity + "%.")    
+            console.log(body)
+            callback(undefined, body.current.weather_descriptions[0]
+                    , body.current.temperature
+                    , body.current.feelslike
+                    , body.current.humidity + "%"
+                    , body.current.precip + "%"
+                    , body.location.localtime
+                    , body.location.timezone_id
+                    , body.current.is_day)    
         }
     })
 }

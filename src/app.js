@@ -38,7 +38,7 @@ app.get('/about', (req, res) => {
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        helpText: 'This is an example help message',
+        helpText: 'For any help, please send an email at anshulkishore310@gmail.com',
         title: 'Weather',
         name: 'Anshul'
     })
@@ -56,15 +56,25 @@ app.get('/weather', (req, res) => {
             return res.send({ error })
         }
     
-        forcast(latitude, longitude, (error, forcastData) => {
+        forcast(latitude, longitude, (error, weatherDescription, temperature, feelslike, humidity, precip, localtime, timezone_id, is_day) => {
             if (error) {
                 return res.send({ error })
             }
 
+            const date = (localtime.split(" "))[0]
+            const time = (localtime.split(" "))[1]
             res.send({
-                forcast: forcastData,
+                forcast: weatherDescription,
                 location,
-                address: req.query.address
+                address: req.query.address,
+                localtime,
+                time,
+                temperature,
+                feelslike,
+                humidity,
+                precip,
+                timezone_id,
+                is_day
             })
         })
     })
