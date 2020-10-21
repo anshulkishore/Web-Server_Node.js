@@ -61,11 +61,6 @@ app.get('/weather', (req, res) => {
                 return res.send({ error })
             }
 
-            // console.log(weatherDescription)
-            // console.log(temperature)
-            // console.log(feelslike)
-            // console.log(localtime)
-            // console.log(is_day)
             const time = (localtime.split(" "))[1]
             res.send({
                 forcast: weatherDescription,
@@ -84,17 +79,17 @@ app.get('/weather', (req, res) => {
     })
 })
 
-app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error: 'You must provide a search term'
-        })
-    }
-    console.log(req.query.search)
-    res.send({
-        products: []
-    })
-})
+// app.get('/products', (req, res) => {
+//     if (!req.query.search) {
+//         return res.send({
+//             error: 'You must provide a search term'
+//         })
+//     }
+//     console.log(req.query.search)
+//     res.send({
+//         products: []
+//     })
+// })
 
 app.get('/help/*', (req, res) => {
     res.render('404', {
