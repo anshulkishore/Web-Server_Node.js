@@ -1,10 +1,10 @@
 console.log('Client side javascript file is loaded!')
 
-fetch('http://puzzle.mead.io/puzzle').then((response) => {
-    response.json().then((data) => {
-        console.log(data)
-    })
-})
+// fetch('http://puzzle.mead.io/puzzle').then((response) => {
+//     response.json().then((data) => {
+//         console.log(data)
+//     })
+// })
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
@@ -49,18 +49,19 @@ weatherForm.addEventListener('submit', (e) => {
 })
 
 const setDecoration = (data) => {
-    
-    if (data.is_day == 'yes') {    
+    console.log(data)
+    const time = (data.localtime.split(" "))[1]
+    if ((time.split(":"))[0] >= 6 && (time.split(":"))[0] < 19) {    
         document.body.style.background = "linear-gradient(to bottom, #FDC76F, #FFDA9E, #ffffff)"
         weatherContent.style.background = "#D18201"
         pTemperature.style.color = "#056AB6"
-        if (data.forcast.includes("cloud")) {
+        if (data.forcast.toLowerCase().includes('cloud'.toLowerCase())) {
             img.src = "/img/sunny_cloudy.png";
-        } else if (data.forcast.includes("rain")) {
+        } else if (data.forcast.toLowerCase().includes('Rain'.toLowerCase())) {
             img.src = "/img/sunny_rainy.png";
-        } else if (data.forcast.includes("snow")) {
+        } else if (data.forcast.toLowerCase().includes('snow'.toLowerCase())) {
             img.src = "/img/snowy.png";
-        } else if (data.forcast.includes("fog")) {
+        } else if (data.forcast.toLowerCase().includes('fog'.toLowerCase())) {
             img.src = "/img/foggy.png";
         } else {
             img.src = "/img/sunny.png";
@@ -69,13 +70,13 @@ const setDecoration = (data) => {
         document.body.style.background = "linear-gradient(to bottom, #78C9FF, #CAEAFF, #ffffff)"
         weatherContent.style.background = "#045A93"
         pTemperature.style.color = "#EB9407"
-        if (data.forcast.includes("cloud")) {
+        if (data.forcast.toLowerCase().includes('cloud'.toLowerCase())) {
             img.src = "/img/night_cloudy.png";
-        } else if (data.forcast.includes("rain")) {
+        } else if (data.forcast.toLowerCase().includes('rain'.toLowerCase())) {
             img.src = "/img/night_rainy.png";
-        } else if (data.forcast.includes("snow")) {
+        } else if (data.forcast.toLowerCase().includes('snow'.toLowerCase())) {
             img.src = "/img/snowy.png";
-        } else if (data.forcast.includes("fog")) {
+        } else if (data.forcast.toLowerCase().includes('fog'.toLowerCase())) {
             img.src = "/img/foggy.png";
         } else {
             img.src = "/img/night.png";

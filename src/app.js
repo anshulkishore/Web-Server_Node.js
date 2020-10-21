@@ -61,7 +61,11 @@ app.get('/weather', (req, res) => {
                 return res.send({ error })
             }
 
-            const date = (localtime.split(" "))[0]
+            // console.log(weatherDescription)
+            // console.log(temperature)
+            // console.log(feelslike)
+            // console.log(localtime)
+            // console.log(is_day)
             const time = (localtime.split(" "))[1]
             res.send({
                 forcast: weatherDescription,
